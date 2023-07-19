@@ -123,3 +123,10 @@ curl {HOST_IP}:8080/sport
 curl {HOST_IP}:8080/repeat
 curl -d '{"repeat":10}' -H "Content-Type: application/json" -X POST {HOST_IP}:8080/repeat
 ```
+
+## Result
+### Database
+![database](https://github.com/DongGeun974/Web-Crawling-On-Container/assets/53933090/6a0fc7c4-b1c0-433f-b4b4-39adfbeda003)
+![1-38](https://github.com/DongGeun974/Web-Crawling-On-Container/assets/53933090/14b1d2e9-20c0-423a-8391-134aa0f88e17)
+![39-end](https://github.com/DongGeun974/Web-Crawling-On-Container/assets/53933090/18e91289-011f-481c-8530-b4ad95f1f360)
+
