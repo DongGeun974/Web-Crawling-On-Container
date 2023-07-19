@@ -27,3 +27,28 @@
       - user, password
     - PV, PVC
       - for persist
+
+## Docker 
+### Flask
+- Env
+  - FLASK_PORT
+  - DB_HOST
+  - DB_PORT
+  - DB_USER
+  - DB_PASSWD
+  - DB_DBNAME
+  - DEFAULT_REPEAT_TIME
+- Build 
+  - docker build --no-cache -t zxcasd3004/assignment:flask .
+- Start
+  - docker run -itd -e DB_HOST={IP} --name flask -p 8080:8080 zxcasd3004/assignment:flask
+### MySQL
+- Env
+  - MYSQL_ROOT_PASSWORD
+  - MYSQL_DATABASE
+- Build
+  - docker build --no-cache -t zxcasd3004/assignment:mysql .
+- Start
+  - docker run -itd -p 3306:3306 --name mysql  zxcasd3004/assignment:mysql
+
+

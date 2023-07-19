@@ -6,21 +6,22 @@ from crawling import task
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.jobstores.memory import MemoryJobStore
 
+import os
 
 # MySQL 접속 설정
 config = {
-    'host': 'localhost',
-    'port': 3306,
-    'user': 'root',
-    'password': '1234',
-    'database': 'sport',
+    'host': os.environ['DB_HOST'],
+    'port': int(os.environ['DB_PORT']),
+    'user': os.environ['DB_USER'],
+    'password': os.environ['DB_PASSWD'],
+    'database': os.environ['DB_DBNAME'],
     'charset':'utf8'
     }
 
 schedule = BackgroundScheduler(daemon=True, timezone='Asia/Seoul')
 schedule.start()
 jobstore = MemoryJobStore()
-default_repeat_time = 100
+default_repeat_time = int(os.environ['DEFAULT_REPEAT_TIME'])
 
 schedule.add_job(task, 'interval', seconds=default_repeat_time, id='my_job')
 task()
