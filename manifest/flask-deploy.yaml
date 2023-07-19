@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-deploy
+  template:
+    metadata:
+      labels:
+        app: flask-deploy
+    spec:
+      containers:
+      - name: flask-container
+        image: zxcasd3004/assignment:flask
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: app-configmap
+              key: DB_HOST
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: app-configmap
+              key: DB_PORT
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              name: app-configmap
+              key: DB_USER
+        - name: DB_DBNAME
+          valueFrom:
+            configMapKeyRef:
+              name: app-configmap
+              key: DB_DBNAME
+        - name: DEFAULT_REPEAT_TIME
+          valueFrom:
+            configMapKeyRef:
+              name: app-configmap
+              key: DEFAULT_REPEAT_TIME
+        - name: DB_PASSWD
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: DB_PASSWD

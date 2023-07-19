@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-svc
+spec:
+  selector:
+    app: flask-deploy
+  ports:
+  - protocol: TCP
+    port: 80  # Service의 포트
+    targetPort: 8080  # 컨테이너가 노출하는 포트
+  type: LoadBalancer  # External IP를 할당하여 외부로 노출

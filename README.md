@@ -50,4 +50,42 @@
 - Start
   - docker run -itd -p 3306:3306 --name mysql  zxcasd3004/assignment:mysql
 
+## Kubernetes
+### Manifest
+- Deployment, Service
+  - flask
+  - mysql
+- ConfigMap
+  - default repeat time
+  - database host
+  - database port
+  - database user
+  - database name
+- Secret
+  - database password
+- Persistent volumn
+- Persistent volumn claim
 
+## How to Use
+### Kubernetes
+```
+git clone https://github.com/DongGeun974/Web-Crawling-On-Container.git
+cd Web-Crawling-On-Container/manifest
+kubectl apply -f .
+```
+### Docker
+```
+git clone https://github.com/DongGeun974/Web-Crawling-On-Container.git
+cd Web-Crawling-On-Container
+docker build -t zxcasd3004:flask -f flask/Dockerfile .
+docker build -t zxcasd3004:mysql -f db/Dockerfile .
+docker run -itd -e DB_HOST={HOST_IP} --name flask -p 8080:8080 zxcasd3004:flask
+docker run -itd -p 3306:3306 --name mysql zxcasd3004:mysql
+```
+### Flask
+```
+curl {HOST_IP}:8080
+curl {HOST_IP}:8080/sport
+curl {HOST_IP}:8080/repeat
+curl -d '{"repeat":10}' -H "Content-Type: application/json" -X POST {HOST_IP}:8080/repeat
+```
