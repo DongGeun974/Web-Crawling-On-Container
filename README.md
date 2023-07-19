@@ -28,6 +28,41 @@
     - PV, PVC
       - for persist
 
+## Stack
+- OS
+  - Ubuntu 20.04
+  - Window 10
+- Langauge
+  - Python 3.10.6
+- Tool
+  - Visual Studio Code
+  - Docker Desktop
+  - Docker 24.0.2
+  - Kubernetes 1.27.2
+
+## Specification
+### Database
+- events
+  | Column      | Type         | Description       |
+  | ---         | ---          | ---              |
+  | id          | int          | 아이디           |
+  | start_date  | datetime     | 경기 시작 시간    |
+  | end_data    | datetime     | 경기 종료 시간    |
+  | title       | varchar(200) | 경기 내용         |
+  | description | varchar(200) | 경기 참가 팀      |
+  | created_at  | datetime     | 데이터 생성 시간  |
+  | updated_at  | datetime     | 데이터 수정 시간  |
+  | process     | varchar(45)  | 경기 상태        |
+
+### API
+  | Method  | URI     | Descrition           |
+  | ---     | ---     | ---                  |
+  | GET     | /       | 애플리케이션 소개      |
+  | GET     | /sport  | 경기 데이터 조회       |
+  | GET     | /repeat | 현재 크롤링 주기 출력  |
+  | POST    | /repeat | 크롤링 주기 변경       |
+  
+
 ## Docker 
 ### Flask
 - Env
@@ -49,7 +84,6 @@
   - docker build --no-cache -t zxcasd3004/assignment:mysql .
 - Start
   - docker run -itd -p 3306:3306 --name mysql  zxcasd3004/assignment:mysql
-
 ## Kubernetes
 ### Manifest
 - Deployment, Service
@@ -66,7 +100,7 @@
 - Persistent volumn
 - Persistent volumn claim
 
-## How to Use
+## How to Start
 ### Kubernetes
 ```
 git clone https://github.com/DongGeun974/Web-Crawling-On-Container.git
