@@ -11,7 +11,6 @@ WORKDIR /app/Web-Crawling-On-Container/flask
 
 RUN pip install -r requirements.txt
 
-ENV FLASK_PORT 8080
 ENV DB_HOST mysql
 ENV DB_PORT 3306
 ENV DB_USER root
@@ -19,6 +18,6 @@ ENV DB_PASSWD 1234
 ENV DB_DBNAME sport
 ENV DEFAULT_REPEAT_TIME 100
 
-EXPOSE ${FLASK_PORT}
+EXPOSE 8080
 
 CMD ["python", "-B", "run.py"]
