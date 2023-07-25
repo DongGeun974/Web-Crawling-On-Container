@@ -42,7 +42,6 @@
 
 ## Specification
 ### Database
-- events
   | Column      | Type         | Description       |
   | ---         | ---          | ---              |
   | id          | int          | 아이디           |
@@ -118,10 +117,10 @@ docker run -itd -p 3306:3306 --name mysql zxcasd3004:mysql
 ```
 ### Flask
 ```
-curl {HOST_IP}:8080
-curl {HOST_IP}:8080/sport
-curl {HOST_IP}:8080/repeat
-curl -d '{"repeat":10}' -H "Content-Type: application/json" -X POST {HOST_IP}:8080/repeat
+curl {HOST_IP}:30080
+curl {HOST_IP}:30080/sport
+curl {HOST_IP}:30080/repeat
+curl -d '{"repeat":10}' -H "Content-Type: application/json" -X POST {HOST_IP}:30080/repeat
 ```
 
 ## Result
